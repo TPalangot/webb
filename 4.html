@@ -1,0 +1,77 @@
+4. Design a dynamic web page with validation using JavaScript.
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Dynamic Web Page with Validation</title>
+ <link rel="stylesheet" type="text/css" href="styles.css">
+ </head>
+ <body>
+ <h1>Dynamic Web Page with Validation</h1>
+ <form id="myForm" onsubmit="return validateForm()">
+ <label for="name">Name:</label>
+ <input type="text" id="name" name="name" required><br>
+ <label for="email">Email:</label>
+ <input type="email" id="email" name="email" required><br>
+ <label for="age">Age:</label>
+ <input type="number" id="age" name="age" required><br>
+ <input type="submit" value="Submit">
+ </form>
+ <script src="script.js"></script>
+ </body>
+ </html>
+ body {
+ font-family: Arial, sans-serif;
+ }
+h1 {
+ text-align: center;
+ }
+ form {
+ max-width: 300px;
+ margin: 20px auto;
+ }
+ label {
+ display: block;
+ margin-bottom: 5px;
+ }
+ input[type="text"],
+ input[type="email"],
+ input[type="number"],
+ input[type="submit"] {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 10px;
+ box-sizing: border-box;
+ }
+ input[type="submit"] {
+ background-color: #4CAF50;
+color: white;
+ border: none;
+ cursor: pointer;
+ }
+ input[type="submit"]:hover {
+ background-color: #45a049;
+ }
+ function validateForm() {
+ var name =document.getElementById('name').value;
+ var email = document.getElementById('email').value;
+ var age = document.getElementById('age').value;
+ if (name === '' || email === '' || age === '') {
+ alert('Please fill in all fields');
+ return false;
+ }
+ if (!validateEmail(email)) {
+ alert('Please enter a valid email address');
+ return false;
+ }
+ if (isNaN(age) || age <= 0) {
+ alert('Please enter a valid age');
+ return false;
+ }
+return true;
+ }
+ function validateEmail(email) {
+ var re = /\S+@\S+\.\S+/;
+ return re.test(email);
+ }

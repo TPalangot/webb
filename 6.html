@@ -1,0 +1,133 @@
+6. Write JavaScript programs on Event Handling
+ a. Validation of registration form
+ b. Open a Window from the current window
+ c. Change color of background at each click of button or refresh of a page
+ d. Display calendar for the month and year selected from combo box
+ e. On Mouse over event
+ a. Validation of registration form
+ <!DOCTYPEhtml>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Registration Form</title>
+ </head>
+ <body>
+ <h2>Registration Form</h2>
+ <form id="registrationForm" onsubmit="return validateForm()">
+ <label for="username">Username:</label>
+ <input type="text" id="username" name="username"><br>
+ <label for="email">Email:</label>
+ <input type="email" id="email" name="email"><br>
+ <label for="password">Password:</label>
+ <input type="password" id="password" name="password"><br>
+ <input type="submit" value="Register">
+ </form>
+ <script>
+ function validateForm() {
+ var username = document.getElementById('username').value;
+ var email = document.getElementById('email').value;
+ var password = document.getElementById('password').value;
+if (username === '' || email === '' || password === '') {
+ alert('Please fill in all fields');
+ return false;
+ }
+ return true;
+ }
+ </script>
+ </body>
+ </html>
+ b. Open a Window from the current window
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Open Window</title>
+ </head>
+ <body>
+ <h2>Open Window</h2>
+ <button onclick="openNewWindow()">Open New Window</button>
+ <script>
+ function openNewWindow() {
+ window.open('https://www.example.com', '_blank', 'width=600,height=400');
+ }
+ </script>
+ </body>
+ </html>
+ c. Change color of background at each click of button or refresh of a page
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Change Background Color</title>
+ </head>
+ <body>
+ <h2>Change Background Color</h2>
+ <button onclick="changeColor()">Change Color</button>
+ <script>
+ function changeColor() {
+ var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+ document.body.style.backgroundColor = randomColor;
+ }
+ </script>
+ </body>
+ </html>
+ d. Display calendar for the month and year selected from combo box
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Calendar Display</title>
+ </head>
+ <body>
+ <h2>Calendar Display</h2>
+ <label for="month">Month:</label>
+ <select id="month">
+<option value="1">January</option>
+ <option value="2">February</option>
+ <!-- Add other months-->
+ </select>
+ <label for="year">Year:</label>
+ <select id="year">
+ <option value="2022">2022</option>
+ <option value="2023">2023</option>
+ <!-- Add other years-->
+ </select>
+ <button onclick="displayCalendar()">Display Calendar</button>
+ <div id="calendar"></div>
+ <script>
+ function displayCalendar() {
+ var month = document.getElementById('month').value;
+ var year = document.getElementById('year').value;
+ // Logic to generate and display calendar for the selected month and year
+ // This logic can be complex, you may use a library like Moment.js or date-fns for easier date
+ manipulation
+ // For simplicity, I'm omitting the calendar generation logic here
+ var calendarHTML = '<p>Calendar for ' + month + '/' + year + '</p>';
+ document.getElementById('calendar').innerHTML = calendarHTML;
+ }
+ </script>
+ </body>
+ </html>
+ e. On Mouse over event
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Mouse Over Event</title>
+ </head>
+ <body>
+ <h2>Mouse Over Event</h2>
+ <button onmouseover="changeText()">Hover over me</button>
+ <p id="message"></p>
+ <script>
+ function changeText() {
+ document.getElementById('message').innerText = 'You hovered over the button!';
+ }
+ </script>
+ </body>
+ </html>

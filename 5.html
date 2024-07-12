@@ -1,0 +1,98 @@
+5. Design an HTML having a text box and four buttons viz Factorial, Fibonacci, Prime, and
+ Palindrome. When a button is pressed an appropriate javascript function should be called to display
+ a. Factorial of that number
+ b. Fibonacci series up to that number
+ c. Prime numbers up to that number
+ d. Is it palindrome or not
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Number Operations</title>
+ <link rel="stylesheet" type="text/css" href="styles.css">
+ </head>
+ <body>
+ <h1>Number Operations</h1>
+ <label for="numberInput">Enter a number:</label>
+ <input type="number" id="numberInput"><br>
+ <button onclick="calculateFactorial()">Factorial</button>
+ <button onclick="calculateFibonacci()">Fibonacci</button>
+ <button onclick="calculatePrime()">Prime Numbers</button>
+ <button onclick="checkPalindrome()">Palindrome</button>
+ <div id="result"></div>
+ <script src="script.js"></script>
+ </body>
+ </html>
+ body {
+font-family: Arial, sans-serif;
+ text-align: center;
+ }
+ h1 {
+ margin-bottom: 20px;
+ }
+ label {
+ font-weight: bold;
+ }
+ input[type="number"] {
+ margin-bottom: 10px;
+ }
+ button {
+ padding: 10px 20px;
+ margin: 0 5px;
+ background-color: #4CAF50;
+ color: white;
+ border: none;
+ cursor: pointer;
+ }
+ button:hover {
+ background-color: #45a049;
+ }
+ #result {
+ margin-top: 20px;
+font-weight: bold;
+ }
+ function calculateFactorial() {
+ var number = document.getElementById('numberInput').value;
+ var result = 1;
+ for (var i = 2; i <= number; i++) {
+ result *= i;
+ }
+ document.getElementById('result').innerText = 'Factorial: ' + result;
+ }
+ function calculateFibonacci() {
+ var number = parseInt(document.getElementById('numberInput').value);
+ var fibArray = [0, 1];
+ for (var i = 2; i <= number; i++) {
+ fibArray[i] = fibArray[i- 1] + fibArray[i- 2];
+ }
+ document.getElementById('result').innerText = 'Fibonacci Series: ' + fibArray.slice(0, number +
+ 1).join(', ');
+ }
+ function calculatePrime() {
+ var number = parseInt(document.getElementById('numberInput').value);
+ var primes = [];
+ for (var i = 2; i <= number; i++) {
+ var isPrime = true;
+ for (var j = 2; j <= Math.sqrt(i); j++) {
+ if (i % j === 0) {
+ isPrime = false;
+ break;
+}
+ }
+ if (isPrime) {
+ primes.push(i);
+ }
+ }
+ document.getElementById('result').innerText = 'Prime Numbers: ' + primes.join(', ');
+ }
+ function checkPalindrome() {
+ var number = document.getElementById('numberInput').value;
+ var reversedNumber = number.split('').reverse().join('');
+ var isPalindrome = number === reversedNumber;
+ if (isPalindrome) {
+ document.getElementById('result').innerText = number + ' is a palindrome.';
+ } else {
+ document.getElementById('result').innerText = number + ' is not a palindrome.';
+ }
+ }
